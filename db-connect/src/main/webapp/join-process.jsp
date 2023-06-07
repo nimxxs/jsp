@@ -9,35 +9,40 @@
 	String pUserId = request.getParameter("userId");
 	String pUserPw = request.getParameter("userPw");
 	String pUserName = request.getParameter("userName");
-	String pUseraddress = request.getParameter("useraddress");
-	String pUserzipcode = request.getParameter("userzipcode");
-	String pUsergender = request.getParameter("usergender");
+	int pZonecode = Integer.parseInt(request.getParameter("zonecode"));
+	String pUserAddress = request.getParameter("useraddress");
+	String pDetailAddress = request.getParameter("detailAddress");
+	String pExtraAddress = request.getParameter("extraAddress");
 	
 	String driver = "oracle.jdbc.OracleDriver";
 	String url = "jdbc:oracle:thin:@localhost:1521:xe";
 	String id = "nimxxs";
 	String pw = "1234";
+	String zonecode = "48559";
 	String address = "부산";
-	String zipcode = "051";
-	String gender = "여자";
+	String detailaddress = "남구";
+	String extraadress = "용당동";
 	
 	Connection conn = null;
 	PreparedStatement pstmt = null;
 	ResultSet rs = null;
 	
-	String sql = "insert into member values (?,?,?,?,?,?)";
+	String sql = "insert into member values (?,?,?,?,?,?,?)";
+	
+	
 	
 	Class.forName(driver);
-	conn = DriverManager.getConnection(url, id, pw, address, zipcode, gender);
+	conn = DriverManager.getConnection(url, id, pw);
 	pstmt = conn.prepareStatement(sql);
 	pstmt.setString(1, pUserId);
 	pstmt.setString(2, pUserName);
 	pstmt.setString(3, pUserPw);
-	pstmt.setString(4, pUseraddress);
-	pstmt.setString(5, pUserzipcode);
-	pstmt.setString(6, pUsergender);
+	pstmt.setInt(4, pZonecode);
+	pstmt.setString(5, pUserAddress);
+	pstmt.setString(6, pDetailAddress);
+	pstmt.setString(7, pExtraAddress);
 	
-	int result = pstmt.executeUpdate();
+	int result = pstmt.executeUpdate();		// select를 제외한 나머지 update, delete, insert
 	if(result > 0){
 		response.sendRedirect("login-form.jsp");		
 	} else {

@@ -7,7 +7,7 @@
       <div class="row mt-5 justify-content-center">
         <div class="col-6">
           <div class="form-floating mb-3">
-            <input type="text" name="userId" class="form-control" id="floatingInput" placeholder="아이디를 입력해 주세요." />
+            <input type="text" name="userId" class="form-control" id="floatingInput" placeholder="아이디를 입력해 주세요." value="nimxxs" readonly/>
             <label for="floatingInput">ID</label>
           </div>
           <div class="form-floating mb-3">
@@ -15,7 +15,7 @@
             <label for="floatingPassword">Password</label>
           </div>
           <div class="text-center">
-            <button type="submit" class="btn btn-primary btn-lg">Login</button>
+            <button type="submit" class="btn btn-primary btn-lg">회원탈퇴</button>
           </div>
         </div>
       </div>
