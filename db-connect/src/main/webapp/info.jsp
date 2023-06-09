@@ -21,7 +21,7 @@
     PreparedStatement pstmt = null; 
     ResultSet rs= null; 
     
-    String sql = "select id,name,address,lpad(zonecode,5,'0') as changeZonecode, detailAddress from member where id = ?"; 
+    String sql = "select id,name,email,address,lpad(zonecode,5,'0') as changeZonecode," + "detailAddress from member where id = ?"; 
     Class.forName(driver);
     conn = DriverManager.getConnection(url,id,pw); 
     pstmt = conn.prepareStatement(sql); 
@@ -32,6 +32,7 @@
     String detailAddress = null; 
     String zonecode = null; 
     String name = null; 
+    String email = null; 
     String allAddress = null; 
     
     if(rs.next()){ 
@@ -39,9 +40,12 @@
     	detailAddress = rs.getString("detailAddress"); 
     	zonecode = rs.getString("changeZonecode"); 
     	name = rs.getString("name");
+    	email = rs.getString("email");
     	allAddress = address + " / " + detailAddress;
  	} 
- 	%>
+    if(detailAddress==null) detailAddress = "상세주소 없음";
+    
+ %>
 
 <div class="container-sm mt-5">
   <table class="table">
@@ -55,8 +59,12 @@
         <td><%= name%></td>
       </tr>
       <tr>
+        <th scope="row">Email</th>
+        <td><%= email%></td>
+      </tr>
+      <tr>
         <th scope="row">주소</th>
-        <td><%= address%> / <%= detailAddress%></td>
+        <td><%= address +" / "+  detailAddress%></td>
       </tr>
       <tr>
         <th scope="row">우편번호</th>
@@ -66,6 +74,7 @@
   </table>
   <div class="mt-5">
     <a href="modify.jsp" class="btn btn-info">회원 정보 수정</a>
+    <a href="modify-password.jsp" class="btn btn-info">비밀 번호 변경</a>
     <a href="delete.jsp" class="btn btn-danger">회원 탈퇴</a>
   </div>
 </div>

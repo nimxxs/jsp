@@ -27,7 +27,7 @@
         <li class="nav-item"><a href="join-form.jsp" class="nav-link">join</a></li>
         <% } else { %>
         <li class="nav-item"><a href="logout.jsp" class="nav-link">logout</a></li>
-        <li class="nav-item"><a href="info.jsp" class="nav-link"><%= loggedUserId%></a></li>
+        <li class="nav-item"><a href="info.jsp" class="nav-link"><%= loggedUserName%></a></li>
         <% } %>
       </ul>
     </header>
