@@ -9,15 +9,16 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-@WebServlet("/member/login")
-public class LoginFormController extends HttpServlet {
+@WebServlet("/index/index")
+public class indexController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-    public LoginFormController() {
+	
+    public indexController() {
         super();
     }
 	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		RequestDispatcher dispatcher = 
-				request.getRequestDispatcher("/WEB-INF/member/login.jsp");
+				request.getRequestDispatcher("/WEB-INF/index/index.jsp");
 		dispatcher.forward(request, response);
 	}
 

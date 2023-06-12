@@ -84,8 +84,48 @@ public class MemberDao {
 		}
 		return loggedMemberDto;
 	}
-	
-	
+
+	public int idCheck(String userId) {
+		int result = 0;
+		getConnection();
+		String sql = "select count(*) as count from member where id = ?";
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, userId);
+			rs = pstmt.executeQuery();
+			if(rs.next()) {
+				result = rs.getInt("count");
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			close();
+		}
+		return result;
+	}
+
+	public MemberDto getMemberInfo(String userId) {
+		MemberDto infoMemberDto = null;
+		getConnection();
+		String sql = "select * from member where id = ?";
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, userId);
+			rs = pstmt.executeQuery();
+			if(rs.next()) {
+				infoMemberDto = new MemberDto();
+				infoMemberDto.setId(rs.getString("id"));
+				infoMemberDto.setName(rs.getString("name"));
+				infoMemberDto.setEmail(rs.getString("email"));
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			close();
+		}
+		return infoMemberDto;
+	}
 }
 
 

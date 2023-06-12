@@ -56,7 +56,7 @@
 
   const joinForm = document.forms.joinForm;
   console.log(joinForm.elements.userId);
-  let isDoubleCheck = true;
+  let isDoubleCheck = false;
   btnSubmit.addEventListener("click", (e) => {
     //e.preventDefault();
     if (joinForm.elements.userId.value.trim() === "") {
@@ -107,7 +107,7 @@
   });
   btnIdCheck.addEventListener("click", () => {
     //console.log(`idCheck.jsp?userId=${userId.value}`);
-    fetch("idCheck.jsp?userId=" + userId.value)
+    fetch("../member/idCheck?userId=" + userId.value)
       .then((response) => {
         return response.json();
       })
