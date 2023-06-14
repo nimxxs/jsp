@@ -13,9 +13,13 @@
     <fullyQualifiedTypeName name="javax.servlet.http.HttpServletResponse"/>
     <fullyQualifiedTypeName name="javax.servlet.ServletException"/>
     <fullyQualifiedTypeName name="java.io.IOException"/>
+    <fullyQualifiedTypeName name="com.nimxxs.model.PasswordDto"/>
     <fullyQualifiedTypeName name="javax.servlet.http.HttpSession"/>
-    <fullyQualifiedTypeName name="com.nimxxs.utils.ScriptWriter"/>
     <fullyQualifiedTypeName name="com.nimxxs.model.MemberDto"/>
     <fullyQualifiedTypeName name="com.nimxxs.model.MemberDao"/>
+    <fullyQualifiedTypeName name="com.nimxxs.utils.ScriptWriter"/>
+    <fullyQualifiedTypeName name="java.util.ArrayList"/>
+    <fullyQualifiedTypeName name="com.nimxxs.controller.board.BoardDto"/>
     <fullyQualifiedTypeName name="javax.servlet.RequestDispatcher"/>
+    <fullyQualifiedTypeName name="javax.security.auth.message.callback.PrivateKeyCallback.Request"/>
 </qualifiedTypeNameHistroy>

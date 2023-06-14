@@ -1,4 +1,4 @@
-package com.nimxxs.controller;
+package com.nimxxs.controller.member;
 
 import java.io.IOException;
 
@@ -9,16 +9,14 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-@WebServlet("/index/index")
-public class indexController extends HttpServlet {
+@WebServlet("/member/join")
+public class JoinFormController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-	
-    public indexController() {
+    public JoinFormController() {
         super();
     }
 	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		RequestDispatcher dispatcher = 
-				request.getRequestDispatcher("/WEB-INF/index/index.jsp");
+		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/member/join.jsp");
 		dispatcher.forward(request, response);
 	}
 

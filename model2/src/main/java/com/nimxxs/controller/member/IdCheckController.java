@@ -1,4 +1,4 @@
-package com.nimxxs.controller;
+package com.nimxxs.controller.member;
 
 import java.io.IOException;
 
@@ -10,20 +10,23 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.nimxxs.model.MemberDao;
-import com.nimxxs.model.MemberDto;
-@WebServlet("/member/info")
-public class InfoController extends HttpServlet {
+
+@WebServlet("/member/idCheck")
+public class IdCheckController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-    public InfoController() {
+       
+    public IdCheckController() {
         super();
     }
+
 	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String userId = request.getParameter("userId");
 		MemberDao memberDao = new MemberDao();
-		MemberDto infoMemberDto = memberDao.getMemberInfo(userId);
-		request.setAttribute("infoMemberDto", infoMemberDto);
-		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/member/info.jsp");
+		String userId = request.getParameter("userId");
+		int result = memberDao.idCheck(userId);
+		request.setAttribute("count", result);
+//		HttpSession session = request.getSession();
+//		session.setAttribute("count", 2);
+		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/member/idCheck.jsp");
 		dispatcher.forward(request, response);
 	}
-
 }

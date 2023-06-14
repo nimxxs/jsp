@@ -8,6 +8,7 @@
 <meta charset="UTF-8" />
 <title>Insert title here</title>
 <link rel="stylesheet" href="../css/bootstrap.min.css" />
+<link rel="stylesheet" href="../css/layout.css" />
 <script src="../js/bootstrap.bundle.min.js"></script>
 <script
 	src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
@@ -27,10 +28,13 @@
 					<c:when test="${loggedMember eq null}">
 						<li class="nav-item"><a href="../member/login" class="nav-link">login</a></li>
 						<li class="nav-item"><a href="../member/join" class="nav-link">join</a></li>
+					<!-- 	<li class="nav-item"><a href="../board/list" class="nav-link">게시판</a></li> -->
 					</c:when>
 					<c:otherwise>
 						<li class="nav-item"><a href="../member/logout" class="nav-link">logout</a></li>
-						<li class="nav-item"><a href="../member/info" class="nav-link">${loggedMemberName }</a></li>
+						<li class="nav-item"><a href="../member/info?userId=${loggedMember.id }" class="nav-link">${loggedMemberName }</a></li>
+<!-- 						<li class="nav-item"><a href="../board/list" class="nav-link">게시판</a></li>
+ -->						<li class="nav-item"><a href="../board/write" class="nav-link">글쓰기</a></li>
 					</c:otherwise>
 				</c:choose>
 				<%-- <c:if test="${empty loggedMember}">

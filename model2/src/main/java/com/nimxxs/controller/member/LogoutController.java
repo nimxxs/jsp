@@ -1,4 +1,4 @@
-package com.nimxxs.controller;
+package com.nimxxs.controller.member;
 
 import java.io.IOException;
 

@@ -1,4 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %> <%@ include file="include/header.jsp" %>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %> <%@ include file="../include/header.jsp" %>
 <form action="password-modify-process.jsp" method="post" class="join" name="pwForm">
   <div class="container-sm">
     <div class="row justify-content-center">
@@ -65,4 +65,4 @@
     }
   }); */
 </script>
-<%@ include file="include/footer.jsp" %>
+<%@ include file="../include/footer.jsp" %>

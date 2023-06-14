@@ -1,5 +1,6 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %> <%@ include file="include/header.jsp" %>
-<form action="password-modify-process.jsp" method="post" class="join" name="pwForm">
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %> <%@ include file="../include/header.jsp" %>
+<form action="../member/modifyPasswordProcess" method="post" class="join" name="pwForm">
+<input type="hidden" name="userId" value="${loggedMember.id }"/>
   <div class="container-sm">
     <div class="row justify-content-center">
       <div class="col-6">
@@ -29,17 +30,14 @@
   btnSubmit.addEventListener("click", () => {
     if (pwForm.elements.userPw.valuse.trim() === "") {
       e.preventDefault();
-      alert("비밀번호르 입력해주세요.");
+      alert("비밀번호를 입력해주세요.");
       pwForm.elements.userPw.focus();
     } else if (pwForm.elements.newUserPw.valus.trim() === "") {
       e.preventDefault();
       alert("새 비밀번호를 입력해주세요.");
       pwForm.elements.userPw.focus();
-    } else if (pwForm.elements.newUserPw.valus === pwForm.elements.newUserPw.valus) {
+    } else if (pwForm.elements.newUserPw.valus !== pwForm.elements.newUserP02.valus) {
       e.preventDefault();
-      alert("기존 비밀번호와 같을 수 없습니다.");
-      pwForm.elements.newUserPw.focus();
-    } else if (pwForm.elements.newUserPw.valus !== pwForm.elements.newUserPw02.valus) {
       alert("비밀번호가 같지 않습니다.");
       pwForm.elements.newUserPw02.focus();
     }
@@ -68,4 +66,4 @@
     }
   }); */
 </script>
-<%@ include file="include/footer.jsp" %>
+<%@ include file="../include/footer.jsp" %>

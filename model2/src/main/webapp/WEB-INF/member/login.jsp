@@ -1,8 +1,7 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<!DOCTYPE html>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%> 
 <%@ include file = "../include/header.jsp" %>
 <body>
-  <form action="../member/loginProcess" method="post" class="join">
+  <form action="../member/loginProcess" method="post">
     <div class="container-xl">
       <div class="row mt-5 justify-content-center">
         <div class="col-6">
