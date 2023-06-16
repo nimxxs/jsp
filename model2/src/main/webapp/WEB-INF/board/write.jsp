@@ -19,7 +19,15 @@
 			<div class="text-center">
 				<button type="submit" id="btnSubmit" class="btn btn-primary btn-lg">WRITE</button>
 				<button type="reset" id="btnCancel" class="btn btn-secondary btn-lg">CANCEL</button>
+				<a href="../board/list" class="btn btn-primary btn-lg">LIST</a>
 			</div>
 		</form>
+		<script>
+	      $('#contents').summernote({
+	        // placeholder: 'Hello Bootstrap 5',
+	        tabsize: 2,
+	        height: 100
+	      });
+	    </script>
 	</div>
 <%@ include file = "../include/footer.jsp" %> 
