@@ -8,6 +8,8 @@
 		<item key="incremental" value="false"/>
 		<item key="isRegEx" value="false"/>
 		<list key="findhistory">
+			<item value="celi"/>
+			<item value="hit"/>
 			<item value="info"/>
 			<item value="fetch"/>
 			<item value="executeUpdate"/>

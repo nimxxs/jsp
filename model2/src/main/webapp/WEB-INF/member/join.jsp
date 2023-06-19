@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%> 
 <%@ include file="../include/header.jsp"%>
-<form action="../member/joinProcess" method="post" class="join" name="joinForm">
+<form action="../member/joinProcess" method="post" class="join" name="joinForm" enctype="multipart/form-data">
   <div class="container-sm mt-5">
     <div class="row justify-content-center">
       <div class="col-6">
@@ -24,7 +24,10 @@
           <label for="floatingMail">Email</label>
           <input type="text" name="userEmail" class="form-control" id="floatingMail" placeholder="이메일을 입력해 주세요." />
         </div>
-
+		<div class="mb-3">
+		  <label for="formFile" class="form-label">profile</label>
+		  <input class="form-control" type="file" id="formFile" name="profile">
+		</div>
         <div class="input-group mb-3">
           <input type="text" class="form-control" id="zonecode" placeholder="우편번호" name="zonecode" readonly />
           <button class="btn btn-secondary" type="button" id="button-addon2" onclick="searchZonecode()">우편번호</button>
