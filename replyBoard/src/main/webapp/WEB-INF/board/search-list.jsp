@@ -20,7 +20,7 @@
 			</tr>
 		</thead>
 		<tbody>
-			<c:forEach items="${boardList }" var="boardDto" varStatus="status">
+			<c:forEach items="${searchList }" var="boardDto" varStatus="status">
 				<tr>
 					<td>${pageDto.total - pageDto.pagePerList*(clickPage-1) - status.index}</td>
 					<td>

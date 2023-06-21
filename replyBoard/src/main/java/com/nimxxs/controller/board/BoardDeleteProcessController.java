@@ -7,6 +7,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.nimxxs.model.BoardDao;
 import com.nimxxs.utils.ScriptWriter;
 @WebServlet("/board/delete")
 public class BoardDeleteProcessController extends HttpServlet {

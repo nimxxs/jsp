@@ -7,6 +7,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.nimxxs.model.BoardDao;
+import com.nimxxs.model.BoardDto;
 import com.nimxxs.utils.ScriptWriter;
 @WebServlet("/board/writeProcess")
 public class WriteProcessController extends HttpServlet {

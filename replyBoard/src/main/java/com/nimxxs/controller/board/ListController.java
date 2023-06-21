@@ -2,6 +2,7 @@ package com.nimxxs.controller.board;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashMap;
 
 import javax.security.auth.message.callback.PrivateKeyCallback.Request;
 import javax.servlet.RequestDispatcher;
@@ -10,7 +11,11 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
+import com.nimxxs.model.BoardDao;
+import com.nimxxs.model.BoardDto;
+import com.nimxxs.model.MemberDto;
 import com.nimxxs.model.PageDto;
 @WebServlet("/board/list")
 public class ListController extends HttpServlet {
@@ -32,7 +37,7 @@ public class ListController extends HttpServlet {
 		}
 		double total = boardDao.getTotal();		// 전체 페이지 개수;
 		
-		double pagePerList = 5; 				// 한 번에 보여줄 게시물 개수
+		double pagePerList = 10; 				// 한 번에 보여줄 게시물 개수
 		int pageBlock = 4;						// 밑에 pagination의 한 번에 보여지는 개수
 		
 		//  1~5 6~10 11~15
@@ -42,6 +47,10 @@ public class ListController extends HttpServlet {
 		if(pageEnd>pageTotal) pageEnd = pageTotal;					// 마지막이 토탈보다 크면 마지막은 토탈로 가져간다는 뜻
 		// 마지막 페이지
 		
+		// clickPage - 1; 1 == 1~10; 2 == 11~20;
+		int start = (clickPage-1)*(int)pagePerList+1;				// 1, 11, 21이면
+		int end = start+(int)pagePerList-1;							// 10, 21, 30이 됨
+		
 		PageDto pageDto = new PageDto();
 		pageDto.setPageTotal(pageTotal);
 		pageDto.setTotal(total);
@@ -49,17 +58,16 @@ public class ListController extends HttpServlet {
 		pageDto.setPageStart(pageStart);
 		pageDto.setPageEnd(pageEnd);
 		pageDto.setPagePerList(pagePerList);
-	
+		HashMap<String, Integer> pageMap = new HashMap<>();
+		pageMap.put("start", start);
+		pageMap.put("end", end);
+		
 		
 		// 만약에 전체 글 개수가 108라면 108
 		// int start = strStart==null?1: Integer.parseInt(strStart);
 		// int end = strEnd==null? (int) pagePerList: Integer.parseInt(strEnd);
 		
-		// clickPage - 1; 1 == 1~10; 2 == 11~20;
-		int start = (clickPage-1)*(int)pagePerList+1;				// 1, 11, 21이면
-		int end = start+(int)pagePerList-1;							// 10, 21, 30이 됨
-		
-		ArrayList<BoardDto> boardList = boardDao.getList();
+		ArrayList<BoardDto> boardList = (ArrayList<BoardDto>)boardDao.getList(pageMap);
 		request.setAttribute("clickPage", clickPage);
 		request.setAttribute("boardList", boardList);
 //		request.setAttribute("pageTotal", pageTotal);

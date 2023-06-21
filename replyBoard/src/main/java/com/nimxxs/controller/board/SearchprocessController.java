@@ -12,20 +12,22 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.nimxxs.model.BoardDao;
 import com.nimxxs.model.BoardDto;
-@WebServlet("/board/view")
-public class ViewController extends HttpServlet {
+
+@WebServlet("/board/searchProcess")
+public class SearchprocessController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-    public ViewController() {
+    public SearchprocessController() {
         super();
     }
 	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
-		int id = Integer.parseInt(request.getParameter("id"));
+		String category = request.getParameter("category");
+		String searchWord = request.getParameter("searchWord");
+		ArrayList<BoardDto> searchList = null;
 		BoardDao boardDao = new BoardDao();
-		boardDao.updateHit(id);
-		BoardDto boardDto = boardDao.getView(id);
-		request.setAttribute("boardDto", boardDto);
-		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/board/view.jsp");
+		searchList = (ArrayList<BoardDto>)boardDao.search(category,searchWord);
+		request.setAttribute("searchList", searchList);
+		
+		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/board/search-list.jsp");
 		dispatcher.forward(request, response);
 	}
 
